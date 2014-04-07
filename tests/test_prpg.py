@@ -243,9 +243,18 @@ class TestPrpg(unittest.TestCase):
 		self.assertEqual(expect, self.password_generator.get_used_characters())	
 
 	def test_get_used_characters_upper_letters_and_numbers_and_special_characters(self):
-		'Test get_used_characters method with upper letters, numbers, and special characters'
+		'Test get_used_characters method with upper letters, numbers and special characters'
 		expect = self.upper_letters + self.numbers+ self.special_characters
 
 		self.password_generator.set_use_lower_letters(False)
+
+		self.assertEqual(expect, self.password_generator.get_used_characters())	
+
+	def test_get_used_characters_numbers_and_special_characters(self):
+		'Test get_used_characters method with numbers and special characters'
+		expect = self.numbers+ self.special_characters
+
+		self.password_generator.set_use_lower_letters(False)
+		self.password_generator.set_use_upper_letters(False)
 
 		self.assertEqual(expect, self.password_generator.get_used_characters())	
